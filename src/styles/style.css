@@ -4,7 +4,7 @@
   --color-mid: #737373;
   --color-dark: #404040;
   --color-darkestish: #1d1b1b;
-  --color-darkest: #111111;
+  --color-darkest: #141414;
   /* Color Theme Swatches in Hex */
 }
 
@@ -23,7 +23,7 @@ body {
 }
 #app {
   min-height: 100%;
-  min-width: 60%;
+  min-width: 100%;
 }
 
 #header {
@@ -48,15 +48,14 @@ body {
   display: flex;
   align-items: center;
 
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: var(--color-mid);
-  padding: 0.2rem 1rem;
+  padding: 0.3rem 1rem;
 }
 
 #location-search-bar {
-  min-width: 500px;
-  font-size: 1.5rem;
-  height: 50px;
+  min-width: 200px;
+  font-size: 1.4rem;
   border: none;
 
   background-color: transparent;
@@ -79,12 +78,11 @@ body {
 
 .search-img {
   background-image: url("../assets/images/icons8-search-50.png");
+  width: 100%;
+  height: 100%;
 }
 
 .img {
-  width: 100%;
-  height: 100%;
-
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -97,8 +95,8 @@ body {
 }
 
 .unit-switch {
-  padding: 0.2rem 2rem;
-  font-size: 1.6rem;
+  padding: 0.2rem 1.5rem;
+  font-size: 1.3rem;
   background-color: var(--color-lightest);
   color: var(--color-darkestish);
   border: none;
@@ -130,7 +128,7 @@ body {
   padding: 5rem;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, 600px);
-  grid-auto-rows: 500px;
+  grid-auto-rows: 700px;
 
   width: 100%;
   height: 100%;
@@ -140,13 +138,116 @@ body {
   background-color: green;
 
   display: grid;
-  justify-content: center;
+  grid-template-areas:
+    "condition temperature"
+    "temperature temperature";
+}
+
+.temperature-container {
+  grid-area: temperature;
+  background-color: yellow;
+}
+
+.condition-container {
+  grid-area: condition;
 }
 
 .info-right {
-  background-color: grey;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+  row-gap: 2rem;
+  /* background-color: grey; */
+
+  justify-content: center;
+  align-content: center;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  background-color: var(--color-darkest);
+
+  box-shadow: 0px 0px 10px 2px #0e0d0d;
+
+  border-radius: 25px;
+}
+
+.card-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.card-title {
+  color: var(--color-lightest);
+}
+
+.card-stats {
+  color: var(--color-light);
+}
+
+.sun-stats-container {
+  display: flex;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.sun-title {
+  font-size: 1rem;
+}
+
+.sun-stats {
+  font-size: 0.8rem;
+}
+
+.uv-img {
+  background-image: url("../assets/images/icons8-sun-48.png");
+}
+
+.cloud-img {
+  background-image: url("../assets/images/icons8-cloud-64.png");
+}
+.humidity-img {
+  background-image: url("../assets/images/icons8-drops-64.png");
+}
+
+.wind-img {
+  background-image: url("../assets/images/icons8-wind-50.png");
+}
+
+.visibility-img {
+  background-image: url("../assets/images/icons8-visibility-90.png");
+}
+
+.pollution-img {
+  background-image: url("../assets/images/icons8-pollution-64.png");
+}
+
+.rain-img {
+  background-image: url("../assets/images/icons8-rain-96.png");
+}
+
+.sun-img {
+  background-image: url("../assets/images/icons8-sunset-64.png");
 }
 
 .condition-img {
   background-image: url("//cdn.weatherapi.com/weather/64x64/day/386.png");
+}
+
+.moon-fist-quarter-img {
+  background-image: url("../assets/images/icons8-first-quarter-96.png");
+}
+
+.new-moon-img {
+  background-image: url("../assets/images/icons8-new-moon-96.png");
+}
+
+.moon-last-quarter-img {
+  background-image: url("../assets/images/icons8-last-quarter-96.png");
 }
