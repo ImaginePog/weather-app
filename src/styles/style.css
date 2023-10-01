@@ -294,3 +294,7 @@ body {
 .sun-img {
   background-image: url("../assets/images/icons8-sunset-64.png");
 }
+
+.hide {
+  display: none;
+}

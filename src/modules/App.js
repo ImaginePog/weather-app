@@ -29,8 +29,12 @@ const App = (() => {
   }
 
   function start(location) {
+    Display.showLoading();
     getLocationData(location)
       .then(processAPIData)
+      .catch((err) => {
+        console.log(err);
+      })
       .then(updateUnitSystem)
       .then(Display.update);
   }

@@ -5,6 +5,7 @@ import UI from "./modules/UI";
 import App from "./modules/App";
 
 DOMLoader.loadObjects();
+Display.showLoading();
 
 function getCoordinates() {
   return new Promise(function (resolve, reject) {

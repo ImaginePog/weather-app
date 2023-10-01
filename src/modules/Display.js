@@ -64,6 +64,8 @@ const Display = (() => {
     DOMLoader.getObject(".rain").textContent = weatherData.rain;
     DOMLoader.getObject(".sunrise").textContent = weatherData.sun.rise;
     DOMLoader.getObject(".sunset").textContent = weatherData.sun.set;
+
+    showContent();
   }
 
   function renderUI() {
@@ -76,7 +78,17 @@ const Display = (() => {
     }
   }
 
-  return { update, renderUI };
+  function showLoading() {
+    DOMLoader.getObject("#app").classList.add("hide");
+    DOMLoader.getObject(".loading-modal").classList.remove("hide");
+  }
+
+  function showContent() {
+    DOMLoader.getObject(".loading-modal").classList.add("hide");
+    DOMLoader.getObject("#app").classList.remove("hide");
+  }
+
+  return { update, renderUI, showLoading, showContent };
 })();
 
 export default Display;

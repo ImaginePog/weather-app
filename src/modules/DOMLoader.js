@@ -24,6 +24,8 @@ const DOMLoader = (() => {
 
   //Loads all the objects on the creation of DOM module
   function loadObjects() {
+    queryObject("#app");
+    queryObject(".loading-modal");
     queryObject(".search-bar");
     queryObject("#location-search-bar");
     queryObject(".unit-switch");
