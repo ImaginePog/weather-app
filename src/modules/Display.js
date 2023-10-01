@@ -84,6 +84,8 @@ const Display = (() => {
   }
 
   function showContent() {
+    window.scrollTo(0, 0);
+    console.log(document.body.scrollTop);
     DOMLoader.getObject(".loading-modal").classList.add("hide");
   }
 
