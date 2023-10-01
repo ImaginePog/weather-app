@@ -1,4 +1,5 @@
 import { getLocationData, processAPIData } from "./Fetch";
+import Display from "./Display";
 
 const App = (() => {
   let selectedUnitSystem = "metric";
@@ -28,7 +29,10 @@ const App = (() => {
   }
 
   function start() {
-    getLocationData("test").then(processAPIData).then(updateUnitSystem);
+    getLocationData("canada")
+      .then(processAPIData)
+      .then(updateUnitSystem)
+      .then(Display.update);
   }
 
   return { start, toggleUnitSystem, getSelectedUnitSystem, getWeatherData };
