@@ -1,7 +1,7 @@
 import Weather from "./Weather";
 
 const BASEURL =
-  "http://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3%aqi=yes&q=";
+  "http://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3%aqi&q=";
 
 async function getLocationData(location) {
   const response = await fetch(BASEURL + location, { mode: "cors" });
@@ -23,20 +23,20 @@ function processAPIData(data) {
       time: data.location.localtime,
     },
     temperature: {
-      celsius: data.current.temp_c,
-      fahrenheit: data.current.temp_f,
+      celsius: Math.round(data.current.temp_c),
+      fahrenheit: Math.round(data.current.temp_f),
     },
     temperatureMax: {
-      celsius: data.forecast.forecastday[0].day.maxtemp_c,
-      fahrenheit: data.forecast.forecastday[0].day.maxtemp_f,
+      celsius: Math.round(data.forecast.forecastday[0].day.maxtemp_c),
+      fahrenheit: Math.round(data.forecast.forecastday[0].day.maxtemp_f),
     },
     temperatureMin: {
-      celsius: data.forecast.forecastday[0].day.mintemp_c,
-      fahrenheit: data.forecast.forecastday[0].day.mintemp_f,
+      celsius: Math.round(data.forecast.forecastday[0].day.mintemp_c),
+      fahrenheit: Math.round(data.forecast.forecastday[0].day.mintemp_f),
     },
     feelsLike: {
-      celsius: data.current.feelslike_c,
-      fahrenheit: data.current.feelslike_f,
+      celsius: Math.round(data.current.feelslike_c),
+      fahrenheit: Math.round(data.current.feelslike_f),
     },
     condition: {
       text: data.current.condition.text,
