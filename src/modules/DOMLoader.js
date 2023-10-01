@@ -25,6 +25,24 @@ const DOMLoader = (() => {
   //Loads all the objects on the creation of DOM module
   function loadObjects() {
     queryObject(".unit-switch");
+    queryObject(".location");
+    queryObject(".temperature-main");
+    queryObject(".temperature-max");
+    queryObject(".temperature-min");
+    queryObject(".temperature-feels-like");
+    queryObject(".condition-text");
+    queryObject(".condition-img");
+    queryObject(".uv-index");
+    queryObject(".cloudiness");
+    queryObject(".humidity");
+    queryObject(".wind-speed");
+    queryObject(".wind-direction");
+    queryObject(".moon-img");
+    queryObject(".moon-phase");
+    queryObject(".visibility");
+    queryObject(".rain");
+    queryObject(".sunrise");
+    queryObject(".sunset");
   }
 
   //Reload an object; only if it has been loaded

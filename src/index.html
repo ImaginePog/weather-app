@@ -21,26 +21,33 @@
           </div>
         </div>
         <div class="options-container">
-          <button class="unit-switch celsius">°C</button>
+          <button class="unit-switch celsius"></button>
         </div>
       </header>
       <main id="main">
         <div class="content-container">
           <div class="info-left content-card">
             <div class="info-header">
-              <h2 class="location">Ontario, Canada</h2>
-              <h2 class="location-clock">10:05AM Sep-23, 2023</h2>
+              <h2 class="location"></h2>
+              <h2 class="location-clock"></h2>
             </div>
             <div class="temperature-container">
-              <p class="temperature-main">23°C</p>
+              <p class="temperature-main"></p>
               <div class="temperature-details-container">
-                <p class="temperature-max">Max: 27°C</p>
-                <p class="temperature-min">Min: 20°C</p>
-                <p class="temperature-feels-like">Feels Like: 22°C</p>
+                <p class="temperature-max-container">
+                  Max: <span class="temperature-max"></span>
+                </p>
+                <p class="temperature-min-container">
+                  Min:
+                  <span class="temperature-min"></span>
+                </p>
+                <p class="temperature-feels-like-container">
+                  Feels Like: <span class="temperature-feels-like"></span>
+                </p>
               </div>
             </div>
             <div class="condition-container">
-              <div class="condition-text">Light rain with thunder</div>
+              <div class="condition-text"></div>
               <div class="condition-img img"></div>
             </div>
           </div>
@@ -48,53 +55,56 @@
             <div class="uv-card info-card content-card">
               <div class="img uv-img card-icon"></div>
               <h3 class="card-title">UV Index</h3>
-              <p class="card-stats">7</p>
+              <p class="card-stats uv-index"></p>
             </div>
             <div class="cloud-card info-card content-card">
               <div class="img cloud-img card-icon"></div>
               <h3 class="card-title">Cloudiness</h3>
-              <p class="card-stats">83%</p>
+              <p class="card-stats cloudiness"></p>
             </div>
             <div class="humidity-card info-card content-card">
               <div class="img humidity-img card-icon"></div>
               <h3 class="card-title">Humidity</h3>
-              <p class="card-stats">83%t</p>
+              <p class="card-stats humidity"></p>
             </div>
             <div class="wind-card info-card content-card">
               <div class="img wind-img card-icon"></div>
               <h3 class="card-title">Wind</h3>
-              <p class="card-stats">3 km/h East</p>
+              <p class="card-stats">
+                <span class="wind-speed"></span> <span>|</span>
+                <span class="wind-direction"></span>
+              </p>
             </div>
             <div class="moon-card info-card content-card">
-              <div class="img moon-last-quarter-img card-icon"></div>
+              <div class="img moon-img card-icon"></div>
               <h3 class="card-title">Moon Phase</h3>
-              <p class="card-stats">New Moon</p>
+              <p class="card-stats moon-phase"></p>
             </div>
             <div class="visibility-card info-card content-card">
               <div class="img visibility-img card-icon"></div>
               <h3 class="card-title">Visibility</h3>
-              <p class="card-stats">20km</p>
+              <p class="card-stats visibility"></p>
             </div>
             <div class="rain-card info-card content-card">
               <div class="img rain-img card-icon"></div>
               <h3 class="card-title">Rain Chance</h3>
-              <p class="card-stats">20%</p>
+              <p class="card-stats rain"></p>
             </div>
             <div class="pollution-card info-card content-card">
               <div class="img pollution-img card-icon"></div>
               <h3 class="card-title">Pollution</h3>
-              <p class="card-stats">80 µg/m3</p>
+              <p class="card-stats pollution"></p>
             </div>
             <div class="sun-card info-card content-card">
               <div class="img sun-img card-icon"></div>
               <div class="sun-stats-container">
                 <div>
                   <h3 class="card-title sun-title content-card">Sunrise</h3>
-                  <p class="card-stats sun-stats">4:07AM</p>
+                  <p class="card-stats sun-stats sunrise"></p>
                 </div>
                 <div>
                   <h3 class="card-title sun-title content-card">Sunset</h3>
-                  <p class="card-stats sun-stats">7:16PM</p>
+                  <p class="card-stats sun-stats sunset"></p>
                 </div>
               </div>
             </div>
