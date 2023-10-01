@@ -32,11 +32,12 @@ const App = (() => {
     Display.showLoading();
     getLocationData(location)
       .then(processAPIData)
-      .catch((err) => {
-        console.log(err);
-      })
       .then(updateUnitSystem)
-      .then(Display.update);
+      .then(Display.update)
+      .catch((error) => {
+        Display.showContent();
+        alert(error);
+      });
   }
 
   return { start, toggleUnitSystem, getSelectedUnitSystem, getWeatherData };

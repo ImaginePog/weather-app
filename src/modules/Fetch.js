@@ -8,6 +8,12 @@ async function getLocationData(location) {
 
   const data = await response.json();
 
+  if (data.error) {
+    throw Error(data.error.message);
+  }
+
+  console.log(data);
+
   return data;
 }
 
