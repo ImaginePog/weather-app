@@ -1,7 +1,7 @@
 import Weather from "./Weather";
 
 const BASEURL =
-  "http://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3%aqi&q=";
+  "https://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3%aqi&q=";
 
 async function getLocationData(location) {
   const response = await fetch(BASEURL + location, { mode: "cors" });
