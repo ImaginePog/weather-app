@@ -79,8 +79,9 @@ body {
 .search-icon-btn {
   height: 1.5rem;
   width: 35px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+
+  background: transparent;
+  border: none;
 
   cursor: pointer;
 }
@@ -105,11 +106,14 @@ body {
 
 .unit-switch {
   padding: 0.2rem 1.5rem;
+  width: 100px;
   font-size: 1.3rem;
   background-color: var(--color-lightest);
   color: var(--color-darkestish);
   border: none;
   border-radius: 15px;
+
+  cursor: pointer;
 }
 
 /* MAIN */
@@ -289,20 +293,4 @@ body {
 
 .sun-img {
   background-image: url("../assets/images/icons8-sunset-64.png");
-}
-
-.condition-img {
-  background-image: url("//cdn.weatherapi.com/weather/128x128/day/386.png");
-}
-
-.moon-fist-quarter-img {
-  background-image: url("../assets/images/icons8-first-quarter-96.png");
-}
-
-.new-moon-img {
-  background-image: url("../assets/images/icons8-new-moon-96.png");
-}
-
-.moon-last-quarter-img {
-  background-image: url("../assets/images/icons8-last-quarter-96.png");
 }

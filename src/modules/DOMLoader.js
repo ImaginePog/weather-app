@@ -24,6 +24,8 @@ const DOMLoader = (() => {
 
   //Loads all the objects on the creation of DOM module
   function loadObjects() {
+    queryObject(".search-bar");
+    queryObject("#location-search-bar");
     queryObject(".unit-switch");
     queryObject(".location");
     queryObject(".temperature-main");

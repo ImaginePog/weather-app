@@ -5,6 +5,24 @@ import UI from "./modules/UI";
 import App from "./modules/App";
 
 DOMLoader.loadObjects();
-App.start();
-Display.renderUI();
-UI.listen();
+
+function getCoordinates() {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+getCoordinates()
+  .then((pos) => {
+    const currPosition = pos.coords.latitude + "," + pos.coords.longitude;
+    return currPosition;
+  })
+  .catch((currPosition) => {
+    currPosition = "Canada";
+    return currPosition;
+  })
+  .then((currPosition) => {
+    App.start(currPosition);
+    Display.renderUI();
+    UI.listen();
+  });
