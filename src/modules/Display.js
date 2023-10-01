@@ -79,13 +79,11 @@ const Display = (() => {
   }
 
   function showLoading() {
-    DOMLoader.getObject("#app").classList.add("hide");
     DOMLoader.getObject(".loading-modal").classList.remove("hide");
   }
 
   function showContent() {
     DOMLoader.getObject(".loading-modal").classList.add("hide");
-    DOMLoader.getObject("#app").classList.remove("hide");
   }
 
   return { update, renderUI, showLoading, showContent };
