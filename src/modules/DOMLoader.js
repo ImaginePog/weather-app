@@ -45,6 +45,7 @@ const DOMLoader = (() => {
     queryObject(".moon-phase");
     queryObject(".visibility");
     queryObject(".rain");
+    queryObject(".pollution");
     queryObject(".sunrise");
     queryObject(".sunset");
   }

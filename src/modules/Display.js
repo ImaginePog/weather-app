@@ -62,6 +62,7 @@ const Display = (() => {
 
     DOMLoader.getObject(".visibility").textContent = weatherData.visibility;
     DOMLoader.getObject(".rain").textContent = weatherData.rain;
+    DOMLoader.getObject(".pollution").textContent = weatherData.pollution;
     DOMLoader.getObject(".sunrise").textContent = weatherData.sun.rise;
     DOMLoader.getObject(".sunset").textContent = weatherData.sun.set;
 

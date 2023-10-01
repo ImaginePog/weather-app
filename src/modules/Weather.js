@@ -133,6 +133,10 @@ class Weather {
       return this.#visibility.miles + this.lengthUnit.imperial;
     }
   }
+
+  get pollution() {
+    return this.#pollution + "µg/m3";
+  }
 }
 
 export default Weather;

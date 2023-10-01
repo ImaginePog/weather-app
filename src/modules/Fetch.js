@@ -1,7 +1,7 @@
 import Weather from "./Weather";
 
 const BASEURL =
-  "https://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3%aqi&q=";
+  "https://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3&aqi=yes&q=";
 
 async function getLocationData(location) {
   const response = await fetch(BASEURL + location, { mode: "cors" });
@@ -60,7 +60,7 @@ function processAPIData(data) {
       rise: data.forecast.forecastday[0].astro.sunrise,
       set: data.forecast.forecastday[0].astro.sunset,
     },
-    // pollution: data.current.air_quality.pm10,
+    pollution: data.current.air_quality.pm10,
   });
 
   return processed;
