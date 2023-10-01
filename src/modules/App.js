@@ -28,8 +28,8 @@ const App = (() => {
     return weatherData;
   }
 
-  function start() {
-    getLocationData("canada")
+  function start(location) {
+    getLocationData(location)
       .then(processAPIData)
       .then(updateUnitSystem)
       .then(Display.update);
