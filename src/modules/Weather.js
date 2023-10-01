@@ -3,6 +3,10 @@ class Weather {
   #temperatureMax;
   #temperatureMin;
   #feelsLike;
+  #cloudCoverage;
+  #humidity;
+  #rain;
+  #pollution;
   #wind;
   #visibility;
   constructor(data) {
@@ -13,15 +17,19 @@ class Weather {
     this.#feelsLike = data.feelsLike;
     this.condition = data.condition;
     this.uvIndex = data.uvIndex;
-    this.cloudCoverage = data.cloudCoverage;
-    this.humidity = data.humidity;
+    this.#cloudCoverage = data.cloudCoverage;
+    this.#humidity = data.humidity;
     this.#wind = data.wind;
     this.#visibility = data.visibility;
     this.moon = data.moon;
-    this.rain = data.rain;
+    this.#rain = data.rain;
     this.sun = data.sun;
-    this.pollution = data.pollution;
+    this.#pollution = data.pollution;
+
     this.unitSystem = "metric";
+    this.temperatureUnit = { metric: " °C", imperial: " °F" };
+    this.lengthUnit = { metric: " km", imperial: " miles" };
+    this.speedUnit = { metric: " km/h", imperial: " mph" };
   }
 
   set temperature(temperature) {
@@ -30,9 +38,9 @@ class Weather {
 
   get temperature() {
     if (this.unitSystem === "metric") {
-      return this.#temperature.celsius;
+      return this.#temperature.celsius + this.temperatureUnit.metric;
     } else {
-      return this.#temperature.fahrenheit;
+      return this.#temperature.fahrenheit + this.temperatureUnit.imperial;
     }
   }
 
@@ -42,9 +50,9 @@ class Weather {
 
   get temperatureMax() {
     if (this.unitSystem === "metric") {
-      return this.#temperatureMax.celsius;
+      return this.#temperatureMax.celsius + this.temperatureUnit.metric;
     } else {
-      return this.#temperatureMax.fahrenheit;
+      return this.#temperatureMax.fahrenheit + this.temperatureUnit.imperial;
     }
   }
 
@@ -54,9 +62,9 @@ class Weather {
 
   get temperatureMin() {
     if (this.unitSystem === "metric") {
-      return this.#temperatureMin.celsius;
+      return this.#temperatureMin.celsius + this.temperatureUnit.metric;
     } else {
-      return this.#temperatureMin.fahrenheit;
+      return this.#temperatureMin.fahrenheit + this.temperatureUnit.imperial;
     }
   }
 
@@ -66,10 +74,34 @@ class Weather {
 
   get feelsLike() {
     if (this.unitSystem === "metric") {
-      return this.#feelsLike.celsius;
+      return this.#feelsLike.celsius + this.temperatureUnit.metric;
     } else {
-      return this.#feelsLike.fahrenheit;
+      return this.#feelsLike.fahrenheit + this.temperatureUnit.imperial;
     }
+  }
+
+  set cloudCoverage(cloud) {
+    this.#cloudCoverage = cloud;
+  }
+
+  get cloudCoverage() {
+    return this.#cloudCoverage + "%";
+  }
+
+  set humidity(humidity) {
+    this.#humidity = humidity;
+  }
+
+  get humidity() {
+    return this.#humidity + "%";
+  }
+
+  set rain(rain) {
+    this.#rain = rain;
+  }
+
+  get rain() {
+    return this.#rain + "%";
   }
 
   set wind(wind) {
@@ -78,9 +110,15 @@ class Weather {
 
   get wind() {
     if (this.unitSystem === "metric") {
-      return { speed: this.#wind.speedKPH, direction: this.#wind.direction };
+      return {
+        speed: this.#wind.speedKPH + this.speedUnit.metric,
+        direction: this.#wind.direction,
+      };
     } else {
-      return { speed: this.#wind.speedMPH, direction: this.#wind.direction };
+      return {
+        speed: this.#wind.speedMPH + this.speedUnit.imperial,
+        direction: this.#wind.direction,
+      };
     }
   }
 
@@ -90,9 +128,9 @@ class Weather {
 
   get visibility() {
     if (this.unitSystem === "metric") {
-      return this.#visibility.km;
+      return this.#visibility.km + this.lengthUnit.metric;
     } else {
-      return this.#visibility.miles;
+      return this.#visibility.miles + this.lengthUnit.imperial;
     }
   }
 }
