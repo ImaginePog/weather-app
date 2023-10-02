@@ -18,6 +18,14 @@ const UI = (() => {
     Display.update();
   }
 
+  function handleMainClick(e) {
+    if (!e.target.dataset.action) {
+      return;
+    }
+
+    Display.flipCard(e.target);
+  }
+
   function listen() {
     DOMLoader.getObject(".search-bar").addEventListener(
       "submit",
@@ -27,6 +35,8 @@ const UI = (() => {
       "click",
       handleUnitBtnClick
     );
+
+    DOMLoader.getObject("#main").addEventListener("click", handleMainClick);
   }
 
   return { listen };

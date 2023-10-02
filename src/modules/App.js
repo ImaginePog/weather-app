@@ -29,6 +29,7 @@ const App = (() => {
   }
 
   function start(location) {
+    Display.resetCards();
     Display.showLoading();
     getLocationData(location)
       .then(processAPIData)

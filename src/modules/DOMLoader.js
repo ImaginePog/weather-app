@@ -25,6 +25,7 @@ const DOMLoader = (() => {
   //Loads all the objects on the creation of DOM module
   function loadObjects() {
     queryObject("#app");
+    queryObject("#main");
     queryObject(".loading-modal");
     queryObject(".search-bar");
     queryObject("#location-search-bar");
@@ -48,6 +49,8 @@ const DOMLoader = (() => {
     queryObject(".pollution");
     queryObject(".sunrise");
     queryObject(".sunset");
+
+    queryObject(".info-card", document, "multiple");
   }
 
   //Reload an object; only if it has been loaded

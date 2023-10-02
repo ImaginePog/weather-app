@@ -89,7 +89,21 @@ const Display = (() => {
     DOMLoader.getObject(".loading-modal").classList.add("hide");
   }
 
-  return { update, renderUI, showLoading, showContent };
+  function flipCard(card) {
+    card.classList.toggle("flip");
+  }
+
+  function resetCards() {
+    const cards = DOMLoader.getObject(".info-card");
+
+    cards.forEach((card) => {
+      if (card.classList.contains("flip")) {
+        card.classList.toggle("flip");
+      }
+    });
+  }
+
+  return { update, renderUI, showLoading, showContent, flipCard, resetCards };
 })();
 
 export default Display;
