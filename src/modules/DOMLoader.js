@@ -37,6 +37,7 @@ const DOMLoader = (() => {
     queryObject(".temperature-feels-like");
     queryObject(".condition-text");
     queryObject(".condition-img");
+    queryObject(".uv-front");
     queryObject(".uv-index");
     queryObject(".cloudiness");
     queryObject(".humidity");

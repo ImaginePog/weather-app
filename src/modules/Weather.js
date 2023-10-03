@@ -35,6 +35,7 @@ class Weather {
 
     this.#windMax = data.windMax;
     this.#visibilityAvg = data.visibilityAvg;
+    this.uvLevel = data.uvLevel;
   }
 
   set temperature(temperature) {

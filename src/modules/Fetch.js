@@ -21,6 +21,16 @@ function getLargeIconURL(url) {
   return url.replace("64x64", "128x128");
 }
 
+function parseUVLevel(uv) {
+  if (uv <= 2) {
+    return "low";
+  } else if (uv <= 5) {
+    return "mid";
+  } else {
+    return "high";
+  }
+}
+
 function processAPIData(data) {
   const processed = new Weather({
     location: {
@@ -82,6 +92,7 @@ function processAPIData(data) {
       km: data.forecast.forecastday[0].day.avgvis_km,
       miles: data.forecast.forecastday[0].day.avgvis_miles,
     },
+    uvLevel: parseUVLevel(data.current.uv),
   });
 
   return processed;

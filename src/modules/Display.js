@@ -34,6 +34,12 @@ const Display = (() => {
     }
   }
 
+  const UV_COLORS = {
+    low: "#39b939",
+    mid: "#ad6b2d",
+    high: "#863e3e",
+  };
+
   function update() {
     const weatherData = App.getWeatherData();
     console.log(weatherData);
@@ -52,6 +58,9 @@ const Display = (() => {
     DOMLoader.getObject(".condition-img").style.backgroundImage =
       "url(" + weatherData.condition.icon + ")";
     DOMLoader.getObject(".uv-index").textContent = weatherData.uvIndex;
+
+    DOMLoader.getObject(".uv-front").style.backgroundColor =
+      UV_COLORS[weatherData.uvLevel];
     DOMLoader.getObject(".cloudiness").textContent = weatherData.cloudCoverage;
     DOMLoader.getObject(".humidity").textContent = weatherData.humidity.current;
     DOMLoader.getObject(".wind-speed").textContent = weatherData.wind.speed;
@@ -60,7 +69,6 @@ const Display = (() => {
     DOMLoader.getObject(".moon-img").style.backgroundImage =
       "url(" + getMoonSrc(weatherData.moon.phase) + ")";
     DOMLoader.getObject(".moon-phase").textContent = weatherData.moon.phase;
-
     DOMLoader.getObject(".visibility").textContent = weatherData.visibility;
     DOMLoader.getObject(".rain").textContent = weatherData.rain;
     DOMLoader.getObject(".pollution").textContent =
