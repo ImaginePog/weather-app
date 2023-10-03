@@ -109,12 +109,17 @@ function processAPIData(data) {
   const currentHour = new Date(data.location.localtime).getHours();
   const timeStep = 2;
   const itemsRange = 3;
+  const offset = timeStep * itemsRange;
+  const maxHours = 23;
+  let centerHour = currentHour;
 
-  for (
-    let i = Math.max(currentHour - itemsRange * timeStep, 0);
-    i < Math.min(currentHour + 1 + itemsRange * timeStep, 24);
-    i += timeStep
-  ) {
+  if (currentHour >= maxHours - offset) {
+    centerHour = currentHour - offset;
+  } else if (currentHour <= offset) {
+    centerHour = currentHour + offset;
+  }
+
+  for (let i = centerHour - offset; i <= centerHour + offset; i += timeStep) {
     if (i == currentHour) {
       hours[i].current = true;
     }
@@ -125,7 +130,9 @@ function processAPIData(data) {
           celsius: Math.round(hours[i].feelslike_c),
           fahrenheit: Math.round(hours[i].feelslike_f),
         },
+        time: hours[i].time.split(" ")[1],
         rain: hours[i].chance_of_rain,
+        current: hours[i].current,
       })
     );
   }

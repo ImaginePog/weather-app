@@ -17,7 +17,6 @@ class Weather extends UnitDataHolder {
   }
 
   set unitSystem(unit) {
-    console.log("SECOND");
     super.unitSystem = unit;
     this.hours.forEach((hour) => {
       hour.unitSystem = unit;

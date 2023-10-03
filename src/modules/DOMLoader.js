@@ -55,6 +55,8 @@ const DOMLoader = (() => {
     queryObject(".max-windspeed");
     queryObject(".avg-visibility");
 
+    queryObject(".hours-container");
+
     queryObject(".info-card", document, "multiple");
   }
 

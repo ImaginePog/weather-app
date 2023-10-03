@@ -31,7 +31,6 @@ class UnitDataHolder {
   }
 
   set unitSystem(unit) {
-    console.log("TIRD");
     this.#unitSystem = unit;
   }
 

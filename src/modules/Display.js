@@ -11,8 +11,6 @@ import waningCrescent from "../assets/images/moon/first-quarter.png";
 import waxingCrescent from "../assets/images/moon/first-quarter.png";
 
 const Display = (() => {
-  let displayUnit = {};
-
   function getMoonSrc(phase) {
     switch (phase) {
       case "Full Moon":
@@ -40,9 +38,46 @@ const Display = (() => {
     high: "#863e3e",
   };
 
+  function createHourItem(hourData) {
+    const item = document.createElement("div");
+    item.classList.add("hour-container", "content-card");
+
+    const title = document.createElement("p");
+    title.classList.add("hour-title");
+    title.textContent = hourData.time;
+
+    const icon = document.createElement("div");
+    icon.classList.add("img", "hour-condition-img");
+    icon.style.backgroundImage = "url(" + hourData.icon + ")";
+
+    const temp = document.createElement("p");
+    temp.classList.add("temperature");
+    temp.textContent = hourData.feelsLike;
+
+    if (hourData.current) {
+      item.classList.add("current-hour-container");
+    }
+
+    item.append(title, icon, temp);
+
+    return item;
+  }
+
+  function fillHoursContainer(hours) {
+    const hoursContainer = DOMLoader.getObject(".hours-container");
+    hoursContainer.innerText = "";
+
+    const frag = document.createDocumentFragment();
+    hours.forEach((hour) => {
+      const item = createHourItem(hour);
+      frag.append(item);
+    });
+
+    hoursContainer.append(frag);
+  }
+
   function update() {
     const weatherData = App.getWeatherData();
-    console.log(weatherData);
     DOMLoader.getObject(".location").textContent =
       weatherData.location.name + ", " + weatherData.location.country;
     DOMLoader.getObject(".temperature-main").textContent =
@@ -81,6 +116,7 @@ const Display = (() => {
     DOMLoader.getObject(".avg-visibility").textContent =
       weatherData.visibilityAvg;
 
+    fillHoursContainer(weatherData.hours);
     showContent();
   }
 
