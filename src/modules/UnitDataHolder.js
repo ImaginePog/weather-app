@@ -10,6 +10,7 @@ class UnitDataHolder {
   #visibility;
   #windMax;
   #visibilityAvg;
+  #unitSystem;
 
   constructor(data) {
     this.#temperature = data.temperature;
@@ -23,6 +24,15 @@ class UnitDataHolder {
     this.#rain = data.rain;
     this.#windMax = data.windMax;
     this.#visibilityAvg = data.visibilityAvg;
+    this.temperatureUnit = { metric: " °C", imperial: " °F" };
+    this.lengthUnit = { metric: " km", imperial: " miles" };
+    this.speedUnit = { metric: " km/h", imperial: " mph" };
+    this.#unitSystem = "metric";
+  }
+
+  set unitSystem(unit) {
+    console.log("TIRD");
+    this.#unitSystem = unit;
   }
 
   set temperature(temperature) {
@@ -30,7 +40,7 @@ class UnitDataHolder {
   }
 
   get temperature() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#temperature.celsius + this.temperatureUnit.metric;
     } else {
       return this.#temperature.fahrenheit + this.temperatureUnit.imperial;
@@ -42,7 +52,7 @@ class UnitDataHolder {
   }
 
   get temperatureMax() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#temperatureMax.celsius + this.temperatureUnit.metric;
     } else {
       return this.#temperatureMax.fahrenheit + this.temperatureUnit.imperial;
@@ -54,7 +64,7 @@ class UnitDataHolder {
   }
 
   get temperatureMin() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#temperatureMin.celsius + this.temperatureUnit.metric;
     } else {
       return this.#temperatureMin.fahrenheit + this.temperatureUnit.imperial;
@@ -66,7 +76,7 @@ class UnitDataHolder {
   }
 
   get feelsLike() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#feelsLike.celsius + this.temperatureUnit.metric;
     } else {
       return this.#feelsLike.fahrenheit + this.temperatureUnit.imperial;
@@ -105,7 +115,7 @@ class UnitDataHolder {
   }
 
   get wind() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return {
         speed: this.#wind.speedKPH + this.speedUnit.metric,
         direction: this.#wind.direction,
@@ -123,7 +133,7 @@ class UnitDataHolder {
   }
 
   get visibility() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#visibility.km + this.lengthUnit.metric;
     } else {
       return this.#visibility.miles + this.lengthUnit.imperial;
@@ -135,7 +145,7 @@ class UnitDataHolder {
   }
 
   get windMax() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#windMax.speedKPH + this.speedUnit.metric;
     } else {
       return this.#windMax.speedMPH + this.speedUnit.imperial;
@@ -147,7 +157,7 @@ class UnitDataHolder {
   }
 
   get visibilityAvg() {
-    if (this.unitSystem === "metric") {
+    if (this.#unitSystem === "metric") {
       return this.#visibilityAvg.km + this.lengthUnit.metric;
     } else {
       return this.#visibilityAvg.miles + this.lengthUnit.imperial;
