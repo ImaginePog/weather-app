@@ -19,26 +19,26 @@ const App = (() => {
     } else {
       selectedUnitSystem = "metric";
     }
+    updateUnitSystem();
+  }
+
+  function updateUnitSystem() {
     weatherData.unitSystem = selectedUnitSystem;
   }
 
-  function updateUnitSystem(weather) {
-    weatherData = weather;
-    weatherData.unitSystem = selectedUnitSystem;
-    return weatherData;
-  }
-
-  function start(location) {
+  async function start(location) {
     Display.resetCards();
     Display.showLoading();
-    getLocationData(location)
-      .then(processAPIData)
-      .then(updateUnitSystem)
-      .then(Display.update)
-      .catch((error) => {
-        Display.showContent();
-        alert(error);
-      });
+
+    try {
+      const rawData = await getLocationData(location);
+      weatherData = processAPIData(rawData);
+      updateUnitSystem();
+      Display.update();
+    } catch (error) {
+      Display.showContent();
+      alert(error);
+    }
   }
 
   return { start, toggleUnitSystem, getSelectedUnitSystem, getWeatherData };
