@@ -1,4 +1,5 @@
 import Weather from "./Weather";
+import Hour from "./Hour";
 
 const BASEURL =
   "https://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3&aqi=yes&q=";
@@ -117,7 +118,16 @@ function processAPIData(data) {
     if (i == currentHour) {
       hours[i].current = true;
     }
-    processed.hours.push(hours[i]);
+    processed.hours.push(
+      new Hour({
+        icon: hours[i].condition.icon,
+        feelsLike: {
+          celsius: Math.round(hours[i].feelslike_c),
+          fahrenheit: Math.round(hours[i].feelslike_f),
+        },
+        rain: hours[i].chance_of_rain,
+      })
+    );
   }
 
   return processed;
