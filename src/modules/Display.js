@@ -34,8 +34,8 @@ const Display = (() => {
     }
   }
 
-  const UV_COLORS = {
-    low: "#39b939",
+  const CAUTION_COLORS = {
+    low: "#629d68",
     mid: "#ad6b2d",
     high: "#863e3e",
   };
@@ -57,10 +57,9 @@ const Display = (() => {
       weatherData.condition.text;
     DOMLoader.getObject(".condition-img").style.backgroundImage =
       "url(" + weatherData.condition.icon + ")";
-    DOMLoader.getObject(".uv-index").textContent = weatherData.uvIndex;
-
+    DOMLoader.getObject(".uv-index").textContent = weatherData.uv.index;
     DOMLoader.getObject(".uv-front").style.backgroundColor =
-      UV_COLORS[weatherData.uvLevel];
+      CAUTION_COLORS[weatherData.uv.level];
     DOMLoader.getObject(".cloudiness").textContent = weatherData.cloudCoverage;
     DOMLoader.getObject(".humidity").textContent = weatherData.humidity.current;
     DOMLoader.getObject(".wind-speed").textContent = weatherData.wind.speed;
@@ -71,18 +70,16 @@ const Display = (() => {
     DOMLoader.getObject(".moon-phase").textContent = weatherData.moon.phase;
     DOMLoader.getObject(".visibility").textContent = weatherData.visibility;
     DOMLoader.getObject(".rain").textContent = weatherData.rain;
-    DOMLoader.getObject(".pollution").textContent =
-      weatherData.pollution.current;
+    DOMLoader.getObject(".pollution").textContent = weatherData.pollution.index;
+    DOMLoader.getObject(".pollution-front").style.backgroundColor =
+      CAUTION_COLORS[weatherData.pollution.level];
     DOMLoader.getObject(".sunrise").textContent = weatherData.sun.rise;
     DOMLoader.getObject(".sunset").textContent = weatherData.sun.set;
-
     DOMLoader.getObject(".avg-humidity").textContent =
       weatherData.humidity.average;
     DOMLoader.getObject(".max-windspeed").textContent = weatherData.windMax;
     DOMLoader.getObject(".avg-visibility").textContent =
       weatherData.visibilityAvg;
-    DOMLoader.getObject(".avg-pollution").textContent =
-      weatherData.pollution.average;
 
     showContent();
   }

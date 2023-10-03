@@ -61,9 +61,11 @@
               <div class="info-card-back">
                 <p class="card-description uv-description">
                   <span>Measure of the sun's radiation</span>
-                  <span>UV 0-2 Safe outside</span>
-                  <span>UV 3-5 Seek shade</span>
-                  <span>UV 6-10 Avoid sun</span>
+                  <span class="caution-low">Low 0-2 (Safe outside)</span>
+                  <span class="caution-moderate"
+                    >Moderate 3-5 (Seek shade)</span
+                  >
+                  <span class="caution-high">High 6-10 (Avoid sun)</span>
                 </p>
               </div>
             </div>
@@ -164,17 +166,17 @@
               class="pollution-card info-card content-card"
               data-action="turn"
             >
-              <div class="info-card-front">
+              <div class="info-card-front pollution-front">
                 <div class="img pollution-img card-icon"></div>
-                <h3 class="card-title">Pollution</h3>
+                <h3 class="card-title">Pollution Index</h3>
                 <p class="card-stats pollution"></p>
               </div>
               <div class="info-card-back">
                 <p class="card-description">
-                  Particles with a diameter of 10 microns or less (PM10)
-                  inhalable into the lungs per volume.
-                  <span>Average PM10:</span>
-                  <span class="avg-pollution"></span>
+                  <span>The Daily Air Quality Index (DAQI)</span>
+                  <span class="caution-low">Low 1-3 </span>
+                  <span class="caution-moderate">Moderate 4-6</span>
+                  <span class="caution-high">High 7-10 </span>
                 </p>
               </div>
             </div>

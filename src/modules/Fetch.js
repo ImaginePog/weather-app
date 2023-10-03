@@ -31,6 +31,16 @@ function parseUVLevel(uv) {
   }
 }
 
+function parsePollutionLevel(index) {
+  if (index <= 3) {
+    return "low";
+  } else if (index <= 6) {
+    return "mid";
+  } else {
+    return "high";
+  }
+}
+
 function processAPIData(data) {
   const processed = new Weather({
     location: {
@@ -58,7 +68,7 @@ function processAPIData(data) {
       text: data.current.condition.text,
       icon: getLargeIconURL(data.current.condition.icon),
     },
-    uvIndex: data.current.uv,
+    uv: { index: data.current.uv, level: parseUVLevel(data.current.uv) },
     cloudCoverage: data.current.cloud,
     humidity: {
       current: data.current.humidity,
@@ -80,8 +90,8 @@ function processAPIData(data) {
       set: data.forecast.forecastday[0].astro.sunset,
     },
     pollution: {
-      current: data.current.air_quality.pm10,
-      average: data.forecast.forecastday[0].day.air_quality.pm10.toFixed(1),
+      index: data.current.air_quality["gb-defra-index"],
+      level: parsePollutionLevel(data.current.air_quality["gb-defra-index"]),
     },
 
     windMax: {
@@ -92,8 +102,9 @@ function processAPIData(data) {
       km: data.forecast.forecastday[0].day.avgvis_km,
       miles: data.forecast.forecastday[0].day.avgvis_miles,
     },
-    uvLevel: parseUVLevel(data.current.uv),
   });
+
+  console.log(processed);
 
   return processed;
 }

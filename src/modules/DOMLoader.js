@@ -47,13 +47,13 @@ const DOMLoader = (() => {
     queryObject(".moon-phase");
     queryObject(".visibility");
     queryObject(".rain");
+    queryObject(".pollution-front");
     queryObject(".pollution");
     queryObject(".sunrise");
     queryObject(".sunset");
     queryObject(".avg-humidity");
     queryObject(".max-windspeed");
     queryObject(".avg-visibility");
-    queryObject(".avg-pollution");
 
     queryObject(".info-card", document, "multiple");
   }

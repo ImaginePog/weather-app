@@ -370,3 +370,15 @@ body {
 .hide {
   display: none;
 }
+
+.caution-low {
+  color: #629d68;
+}
+
+.caution-moderate {
+  color: #ad6b2d;
+}
+
+.caution-high {
+  color: #863e3e;
+}

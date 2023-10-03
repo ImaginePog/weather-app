@@ -6,7 +6,6 @@ class Weather {
   #cloudCoverage;
   #humidity;
   #rain;
-  #pollution;
   #wind;
   #visibility;
   #windMax;
@@ -18,7 +17,7 @@ class Weather {
     this.#temperatureMin = data.temperatureMin;
     this.#feelsLike = data.feelsLike;
     this.condition = data.condition;
-    this.uvIndex = data.uvIndex;
+    this.uv = data.uv;
     this.#cloudCoverage = data.cloudCoverage;
     this.#humidity = data.humidity;
     this.#wind = data.wind;
@@ -26,7 +25,7 @@ class Weather {
     this.moon = data.moon;
     this.#rain = data.rain;
     this.sun = data.sun;
-    this.#pollution = data.pollution;
+    this.pollution = data.pollution;
 
     this.unitSystem = "metric";
     this.temperatureUnit = { metric: " °C", imperial: " °F" };
@@ -35,7 +34,6 @@ class Weather {
 
     this.#windMax = data.windMax;
     this.#visibilityAvg = data.visibilityAvg;
-    this.uvLevel = data.uvLevel;
   }
 
   set temperature(temperature) {
@@ -141,13 +139,6 @@ class Weather {
     } else {
       return this.#visibility.miles + this.lengthUnit.imperial;
     }
-  }
-
-  get pollution() {
-    return {
-      current: this.#pollution.current + " µg/m3",
-      average: this.#pollution.average + " µg/m3",
-    };
   }
 
   set windMax(wind) {
