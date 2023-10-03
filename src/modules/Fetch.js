@@ -104,7 +104,21 @@ function processAPIData(data) {
     },
   });
 
-  console.log(processed);
+  const hours = data.forecast.forecastday[0].hour;
+  const currentHour = new Date(data.location.localtime).getHours();
+  const timeStep = 2;
+  const itemsRange = 3;
+
+  for (
+    let i = Math.max(currentHour - itemsRange * timeStep, 0);
+    i < Math.min(currentHour + 1 + itemsRange * timeStep, 24);
+    i += timeStep
+  ) {
+    if (i == currentHour) {
+      hours[i].current = true;
+    }
+    processed.hours.push(hours[i]);
+  }
 
   return processed;
 }
