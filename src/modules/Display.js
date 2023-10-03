@@ -36,6 +36,7 @@ const Display = (() => {
 
   function update() {
     const weatherData = App.getWeatherData();
+    console.log(weatherData);
     DOMLoader.getObject(".location").textContent =
       weatherData.location.name + ", " + weatherData.location.country;
     DOMLoader.getObject(".temperature-main").textContent =
@@ -52,7 +53,7 @@ const Display = (() => {
       "url(" + weatherData.condition.icon + ")";
     DOMLoader.getObject(".uv-index").textContent = weatherData.uvIndex;
     DOMLoader.getObject(".cloudiness").textContent = weatherData.cloudCoverage;
-    DOMLoader.getObject(".humidity").textContent = weatherData.humidity;
+    DOMLoader.getObject(".humidity").textContent = weatherData.humidity.current;
     DOMLoader.getObject(".wind-speed").textContent = weatherData.wind.speed;
     DOMLoader.getObject(".wind-direction").textContent =
       weatherData.wind.direction;
@@ -62,9 +63,18 @@ const Display = (() => {
 
     DOMLoader.getObject(".visibility").textContent = weatherData.visibility;
     DOMLoader.getObject(".rain").textContent = weatherData.rain;
-    DOMLoader.getObject(".pollution").textContent = weatherData.pollution;
+    DOMLoader.getObject(".pollution").textContent =
+      weatherData.pollution.current;
     DOMLoader.getObject(".sunrise").textContent = weatherData.sun.rise;
     DOMLoader.getObject(".sunset").textContent = weatherData.sun.set;
+
+    DOMLoader.getObject(".avg-humidity").textContent =
+      weatherData.humidity.average;
+    DOMLoader.getObject(".max-windspeed").textContent = weatherData.windMax;
+    DOMLoader.getObject(".avg-visibility").textContent =
+      weatherData.visibilityAvg;
+    DOMLoader.getObject(".avg-pollution").textContent =
+      weatherData.pollution.average;
 
     showContent();
   }

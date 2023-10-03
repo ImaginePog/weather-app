@@ -9,6 +9,8 @@ class Weather {
   #pollution;
   #wind;
   #visibility;
+  #windMax;
+  #visibilityAvg;
   constructor(data) {
     this.location = data.location;
     this.#temperature = data.temperature;
@@ -30,6 +32,9 @@ class Weather {
     this.temperatureUnit = { metric: " °C", imperial: " °F" };
     this.lengthUnit = { metric: " km", imperial: " miles" };
     this.speedUnit = { metric: " km/h", imperial: " mph" };
+
+    this.#windMax = data.windMax;
+    this.#visibilityAvg = data.visibilityAvg;
   }
 
   set temperature(temperature) {
@@ -93,7 +98,10 @@ class Weather {
   }
 
   get humidity() {
-    return this.#humidity + "%";
+    return {
+      current: this.#humidity.current + "%",
+      average: this.#humidity.average + "%",
+    };
   }
 
   set rain(rain) {
@@ -135,7 +143,34 @@ class Weather {
   }
 
   get pollution() {
-    return this.#pollution + "µg/m3";
+    return {
+      current: this.#pollution.current + " µg/m3",
+      average: this.#pollution.average + " µg/m3",
+    };
+  }
+
+  set windMax(wind) {
+    this.#windMax = wind;
+  }
+
+  get windMax() {
+    if (this.unitSystem === "metric") {
+      return this.#windMax.speedKPH + this.speedUnit.metric;
+    } else {
+      return this.#windMax.speedMPH + this.speedUnit.imperial;
+    }
+  }
+
+  set visibilityAvg(visib) {
+    this.#visibilityAvg = visib;
+  }
+
+  get visibilityAvg() {
+    if (this.unitSystem === "metric") {
+      return this.#visibilityAvg.km + this.lengthUnit.metric;
+    } else {
+      return this.#visibilityAvg.miles + this.lengthUnit.imperial;
+    }
   }
 }
 

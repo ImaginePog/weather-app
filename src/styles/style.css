@@ -284,6 +284,25 @@ body {
   color: var(--color-light);
 }
 
+.card-description {
+  width: 100%;
+  height: 100%;
+
+  color: var(--color-lightest);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  gap: 1rem;
+}
+
+.uv-description {
+  text-align: left;
+  align-items: flex-start;
+}
+
 .sun-stats-container {
   display: flex;
   gap: 0.8rem;

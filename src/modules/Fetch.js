@@ -50,7 +50,10 @@ function processAPIData(data) {
     },
     uvIndex: data.current.uv,
     cloudCoverage: data.current.cloud,
-    humidity: data.current.humidity,
+    humidity: {
+      current: data.current.humidity,
+      average: data.forecast.forecastday[0].day.avghumidity,
+    },
     wind: {
       speedKPH: data.current.wind_kph,
       speedMPH: data.current.wind_mph,
@@ -66,7 +69,19 @@ function processAPIData(data) {
       rise: data.forecast.forecastday[0].astro.sunrise,
       set: data.forecast.forecastday[0].astro.sunset,
     },
-    pollution: data.current.air_quality.pm10,
+    pollution: {
+      current: data.current.air_quality.pm10,
+      average: data.forecast.forecastday[0].day.air_quality.pm10.toFixed(1),
+    },
+
+    windMax: {
+      speedKPH: data.forecast.forecastday[0].day.maxwind_kph,
+      speedMPH: data.forecast.forecastday[0].day.maxwind_mph,
+    },
+    visibilityAvg: {
+      km: data.forecast.forecastday[0].day.avgvis_km,
+      miles: data.forecast.forecastday[0].day.avgvis_miles,
+    },
   });
 
   return processed;
