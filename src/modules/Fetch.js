@@ -42,6 +42,42 @@ function parsePollutionLevel(index) {
   }
 }
 
+function processHours(currentHour, hours) {
+  const processedHours = [];
+
+  const timeStep = 2;
+  const itemsRange = 3;
+  const offset = timeStep * itemsRange;
+  const maxHours = 23;
+  let centerHour = currentHour;
+
+  if (currentHour >= maxHours - offset) {
+    centerHour = currentHour - offset;
+  } else if (currentHour <= offset) {
+    centerHour = currentHour + offset;
+  }
+
+  for (let i = centerHour - offset; i <= centerHour + offset; i += timeStep) {
+    if (i == currentHour) {
+      hours[i].current = true;
+    }
+    processedHours.push(
+      new Hour({
+        icon: hours[i].condition.icon,
+        feelsLike: {
+          celsius: Math.round(hours[i].feelslike_c),
+          fahrenheit: Math.round(hours[i].feelslike_f),
+        },
+        time: hours[i].time.split(" ")[1],
+        rain: hours[i].chance_of_rain,
+        current: hours[i].current,
+      })
+    );
+  }
+
+  return processedHours;
+}
+
 function processAPIData(data) {
   const processed = new Weather({
     location: {
@@ -105,37 +141,10 @@ function processAPIData(data) {
     },
   });
 
-  const hours = data.forecast.forecastday[0].hour;
-  const currentHour = new Date(data.location.localtime).getHours();
-  const timeStep = 2;
-  const itemsRange = 3;
-  const offset = timeStep * itemsRange;
-  const maxHours = 23;
-  let centerHour = currentHour;
-
-  if (currentHour >= maxHours - offset) {
-    centerHour = currentHour - offset;
-  } else if (currentHour <= offset) {
-    centerHour = currentHour + offset;
-  }
-
-  for (let i = centerHour - offset; i <= centerHour + offset; i += timeStep) {
-    if (i == currentHour) {
-      hours[i].current = true;
-    }
-    processed.hours.push(
-      new Hour({
-        icon: hours[i].condition.icon,
-        feelsLike: {
-          celsius: Math.round(hours[i].feelslike_c),
-          fahrenheit: Math.round(hours[i].feelslike_f),
-        },
-        time: hours[i].time.split(" ")[1],
-        rain: hours[i].chance_of_rain,
-        current: hours[i].current,
-      })
-    );
-  }
+  processed.hours = processHours(
+    new Date(data.location.localtime).getHours(),
+    data.forecast.forecastday[0].hour
+  );
 
   return processed;
 }
