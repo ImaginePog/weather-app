@@ -1,6 +1,7 @@
 import DOMLoader from "./DOMLoader";
 import App from "./App";
 
+// Image sources from webpack
 import fullMoon from "../assets/images/moon/full-moon.png";
 import firstQuarter from "../assets/images/moon/first-quarter.png";
 import lastQuarter from "../assets/images/moon/first-quarter.png";
@@ -10,7 +11,9 @@ import waxingGibbous from "../assets/images/moon/first-quarter.png";
 import waningCrescent from "../assets/images/moon/first-quarter.png";
 import waxingCrescent from "../assets/images/moon/first-quarter.png";
 
+// Handles all the rendering, updating of the UI and also the app
 const Display = (() => {
+  // Returns the icon for the current phase
   function getMoonSrc(phase) {
     switch (phase) {
       case "Full Moon":
@@ -32,12 +35,36 @@ const Display = (() => {
     }
   }
 
+  //Constant colors for caution
   const CAUTION_COLORS = {
     low: "#629d68",
     mid: "#ad6b2d",
     high: "#863e3e",
   };
 
+  // Shows the "Loading screen"
+  function showLoading() {
+    DOMLoader.getObject(".loading-modal").classList.remove("hide");
+  }
+
+  // Hides the loading screen and displays the content
+  function showContent() {
+    window.scrollTo(0, 0);
+    DOMLoader.getObject(".loading-modal").classList.add("hide");
+  }
+
+  // Renders the UI
+  function renderUI() {
+    const unitBtn = DOMLoader.getObject(".unit-switch");
+    const unit = App.getSelectedUnitSystem();
+    if (unit === "metric") {
+      unitBtn.innerText = "°C";
+    } else {
+      unitBtn.innerText = "°F";
+    }
+  }
+
+  // Creates an hour item based on the data
   function createHourItem(hourData) {
     const item = document.createElement("div");
     item.classList.add("hour-container", "content-card");
@@ -63,6 +90,7 @@ const Display = (() => {
     return item;
   }
 
+  //Fills the hours container with all the created hour items
   function fillHoursContainer(hours) {
     const hoursContainer = DOMLoader.getObject(".hours-container");
     hoursContainer.innerText = "";
@@ -76,6 +104,7 @@ const Display = (() => {
     hoursContainer.append(frag);
   }
 
+  // Gets the current weather data and updates everything
   function update() {
     const weatherData = App.getWeatherData();
     DOMLoader.getObject(".location").textContent =
@@ -120,30 +149,12 @@ const Display = (() => {
     showContent();
   }
 
-  function renderUI() {
-    const unitBtn = DOMLoader.getObject(".unit-switch");
-    const unit = App.getSelectedUnitSystem();
-    if (unit === "metric") {
-      unitBtn.innerText = "°C";
-    } else {
-      unitBtn.innerText = "°F";
-    }
-  }
-
-  function showLoading() {
-    DOMLoader.getObject(".loading-modal").classList.remove("hide");
-  }
-
-  function showContent() {
-    window.scrollTo(0, 0);
-    console.log(document.body.scrollTop);
-    DOMLoader.getObject(".loading-modal").classList.add("hide");
-  }
-
+  // Flips the card that is passed
   function flipCard(card) {
     card.classList.toggle("flip");
   }
 
+  //Unflips all the flipped cards (in case of new search)
   function resetCards() {
     const cards = DOMLoader.getObject(".info-card");
 
@@ -154,7 +165,7 @@ const Display = (() => {
     });
   }
 
-  return { update, renderUI, showLoading, showContent, flipCard, resetCards };
+  return { renderUI, showLoading, showContent, update, flipCard, resetCards };
 })();
 
 export default Display;

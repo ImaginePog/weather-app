@@ -1,3 +1,4 @@
+// Abstract class for datas that use units
 class UnitDataHolder {
   #temperature;
   #temperatureMax;
@@ -33,6 +34,8 @@ class UnitDataHolder {
   set unitSystem(unit) {
     this.#unitSystem = unit;
   }
+
+  //  **** Setters and Getters that define what data is sent based on the 'unitSystem' ****
 
   set temperature(temperature) {
     this.#temperature = temperature;

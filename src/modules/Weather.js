@@ -1,6 +1,8 @@
 import UnitDataHolder from "./UnitDataHolder";
 import Hour from "./Hour";
 
+// Represents the current weather instance
+// Also holds all the hour forecasts
 class Weather extends UnitDataHolder {
   constructor(data) {
     super(data);
@@ -16,6 +18,7 @@ class Weather extends UnitDataHolder {
     this.hours = [];
   }
 
+  // Sets unit system for self and also for all it's Hour objects
   set unitSystem(unit) {
     super.unitSystem = unit;
     this.hours.forEach((hour) => {
@@ -23,6 +26,7 @@ class Weather extends UnitDataHolder {
     });
   }
 
+  // Add all the hours and also set their unit system based on weather
   addHours(hours) {
     this.hours = hours.map((hour) => {
       hour.unitSystem = this.unitSystem;

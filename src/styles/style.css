@@ -12,7 +12,6 @@
   --color-dark: #404040;
   --color-darkestish: #1d1b1b;
   --color-darkest: #141414;
-  /* Color Theme Swatches in Hex */
 }
 
 * {
@@ -26,10 +25,12 @@
 html {
   height: 100%;
 }
+
 body {
   min-height: 100%;
   min-width: 100%;
 }
+
 #app {
   min-height: 100%;
   min-width: 100%;
@@ -321,72 +322,7 @@ body {
   font-size: 0.8rem;
 }
 
-.uv-img {
-  background-image: url("../assets/images/icons8-sun-48.png");
-}
-
-.cloud-img {
-  background-image: url("../assets/images/icons8-cloud-64.png");
-}
-.humidity-img {
-  background-image: url("../assets/images/icons8-drops-64.png");
-}
-
-.wind-img {
-  background-image: url("../assets/images/icons8-wind-50.png");
-}
-
-.visibility-img {
-  background-image: url("../assets/images/icons8-visibility-90.png");
-}
-
-.pollution-img {
-  background-image: url("../assets/images/icons8-pollution-64.png");
-}
-
-.rain-img {
-  background-image: url("../assets/images/icons8-rain-96.png");
-}
-
-.sun-img {
-  background-image: url("../assets/images/icons8-sunset-64.png");
-}
-
-.loading-modal {
-  z-index: 10;
-  position: fixed;
-  top: 0;
-  min-height: 100%;
-  min-width: 100%;
-  overflow: hidden;
-  background-color: var(rgba(0, 0, 0, 0.9));
-  background-color: var(black);
-  backdrop-filter: blur(20px);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  font-size: 5rem;
-}
-
-.hide {
-  display: none;
-}
-
-.caution-low {
-  color: #629d68;
-}
-
-.caution-moderate {
-  color: #ad6b2d;
-}
-
-.caution-high {
-  color: #863e3e;
-}
-
+/* Hours related stuff */
 .hours-container {
   display: flex;
 
@@ -428,4 +364,76 @@ body {
 .current-hour-container {
   transform: scale(1.05);
   background-color: var(--color-dark);
+}
+
+/* Images */
+
+.uv-img {
+  background-image: url("../assets/images/icons8-sun-48.png");
+}
+
+.cloud-img {
+  background-image: url("../assets/images/icons8-cloud-64.png");
+}
+.humidity-img {
+  background-image: url("../assets/images/icons8-drops-64.png");
+}
+
+.wind-img {
+  background-image: url("../assets/images/icons8-wind-50.png");
+}
+
+.visibility-img {
+  background-image: url("../assets/images/icons8-visibility-90.png");
+}
+
+.pollution-img {
+  background-image: url("../assets/images/icons8-pollution-64.png");
+}
+
+.rain-img {
+  background-image: url("../assets/images/icons8-rain-96.png");
+}
+
+.sun-img {
+  background-image: url("../assets/images/icons8-sunset-64.png");
+}
+
+/* UTILS */
+
+.loading-modal {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  background-color: var(rgba(0, 0, 0, 0.9));
+  background-color: var(black);
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-size: 5rem;
+}
+
+/* Dynamic */
+
+.hide {
+  display: none;
+}
+
+.caution-low {
+  color: #629d68;
+}
+
+.caution-moderate {
+  color: #ad6b2d;
+}
+
+.caution-high {
+  color: #863e3e;
 }

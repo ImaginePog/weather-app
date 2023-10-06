@@ -1,11 +1,13 @@
 import Weather from "./Weather";
 import Hour from "./Hour";
 
-const BASEURL =
+// API URL with da key cause its free and we do not care
+const BASE_URL =
   "https://api.weatherapi.com/v1/forecast.json?key=f52a32794db54c7a92182004232909&days=3&aqi=yes&q=";
 
+// Fetches the data from the API
 async function getLocationData(location) {
-  const response = await fetch(BASEURL + location, { mode: "cors" });
+  const response = await fetch(BASE_URL + location, { mode: "cors" });
 
   const data = await response.json();
 
@@ -13,15 +15,15 @@ async function getLocationData(location) {
     throw Error(data.error.message);
   }
 
-  console.log(data);
-
   return data;
 }
 
+// Changes the recieved 64x64 icons to 128x128 icons
 function getLargeIconURL(url) {
   return url.replace("64x64", "128x128");
 }
 
+// Returns the level represented by the index
 function parseUVLevel(uv) {
   if (uv <= 2) {
     return "low";
@@ -32,6 +34,7 @@ function parseUVLevel(uv) {
   }
 }
 
+// Returns the level represented by the index
 function parsePollutionLevel(index) {
   if (index <= 3) {
     return "low";
@@ -42,6 +45,8 @@ function parsePollutionLevel(index) {
   }
 }
 
+// Filters the uneeded hours sent by the API and processes it
+// Returns the processed hours
 function processHours(currentHour, hours) {
   const processedHours = [];
 
@@ -78,6 +83,7 @@ function processHours(currentHour, hours) {
   return processedHours;
 }
 
+// Processes the raw data sent by the API (the data sent is bloated and cluttered)
 function processAPIData(data) {
   const processed = new Weather({
     location: {
